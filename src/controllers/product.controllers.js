@@ -23,7 +23,7 @@ export const getById = async (req, res, next) => {
 export const create = async (req, res, next) => {
   try {
     const newProd = await service.create(req.body);
-    if (!newProd) res.status(404).json({ msg: "Validaation Error!" });
+    if (!newProd) res.status(404).json({ msg: "Validation Error!" });
     else res.status(200).json(newProd);
   } catch (error) {
     next(error.message);
