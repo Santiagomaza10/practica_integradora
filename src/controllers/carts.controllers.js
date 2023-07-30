@@ -31,13 +31,19 @@ export const create = async (req,res,next) => {
     }
 }
 
-export const update = async (req,res,next) => {
+export const addProduct = async (req,res,next) => {
     try {
-        const { id } = req.params;
-
-    } catch (error) {
-        next(error.message)
-    }
+        const { id, productId } = req.params;
+        const cart = await service.addProdToCartService(id, productId);
+    
+        if (cart) {
+          res.status(201).json(cart);
+        } else {
+          res.status(404).json({ mesagge: "Not found" });
+        }
+      } catch (error) {
+        next(error);
+      }
 }
 
 export const remove = async (req,res,next) => {

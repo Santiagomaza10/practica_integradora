@@ -1,4 +1,7 @@
 import { CartsModel } from "./models/carts.model.js";
+/* import ProductDaoMongoDB from "../daos/mongodb/product.dao.js";
+
+const prodDao = new ProductDaoMongoDB(); */
 
 export const getAllCarts = async () => {
   try {
@@ -28,10 +31,37 @@ export const getCartById = async (id) => {
 };
 
 export const addProdToCart = async (cartId, prodId) => {
-  const cart = await CartsModel.findById(cartId)
-  cart.products.push(prodId)
+  try {
+    const cart = await CartsModel.findById(cartId);
+    const productInCart = cart.products.find(
+      (prod) => prod.id.toString() === prodId.toString()
+    );
+
+    if (productInCart) {
+      productInCart.quantity++;
+    } else {
+      cart.products.push({
+        id: prodId,
+        quantity: 1,
+      });
+    }
+/*     console.log("cart en el dao",cart) */
+    await cart.save();
+    return cart;
+  } catch (error) {
+    console.log(error);
+  }
+/*   const cart = await CartsModel.findById(cartId)
+  const prodInCart = await cart.products.find ((prod) => prod.id === prodId )
+  if(!prodInCart) {
+    cart.products.push({
+      id: prodId,
+      quantity: 1
+    })
+  }
+  else prodInCart.quantity++;
   cart.save();
-  return cart
+  return cart */
 };
 
 export const removeCart = async (id) => {

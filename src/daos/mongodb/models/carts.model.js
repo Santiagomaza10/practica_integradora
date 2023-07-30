@@ -1,8 +1,8 @@
 import mongoose from 'mongoose';
 
 const prodToCartSchema = new mongoose.Schema({
-    prodId: {type:mongoose.Schema.Types.ObjectId, ref:'products'},
-    quantity: { type: Number, required:true }
+    prodId: {type:mongoose.Schema.Types.ObjectId, ref:'products',},
+    quantity: { type: Number, }
 })
 
 const cartsSchema = new mongoose.Schema({
