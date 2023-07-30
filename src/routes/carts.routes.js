@@ -9,8 +9,7 @@ router.get('/:id', controller.getById);
 
 router.post ('/', controller.create);
 
-router.post("/:id/product/:productId", controller.addProduct);
-/* router.put ('/:id', controller.update); */
+router.put("/:id/product/:productId", controller.addProduct);
 
 router.delete('/:id', controller.remove);
 

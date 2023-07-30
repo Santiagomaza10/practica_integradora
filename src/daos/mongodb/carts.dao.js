@@ -51,17 +51,6 @@ export const addProdToCart = async (cartId, prodId) => {
   } catch (error) {
     console.log(error);
   }
-/*   const cart = await CartsModel.findById(cartId)
-  const prodInCart = await cart.products.find ((prod) => prod.id === prodId )
-  if(!prodInCart) {
-    cart.products.push({
-      id: prodId,
-      quantity: 1
-    })
-  }
-  else prodInCart.quantity++;
-  cart.save();
-  return cart */
 };
 
 export const removeCart = async (id) => {

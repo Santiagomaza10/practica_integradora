@@ -41,20 +41,11 @@ export const addProdToCartService = async (cartId, prodId) => {
         if (!cart) throw new Error("Cart not found");
         
         const newCart = await cartsDao.addProdToCart(cartId, prodId);
-        console.log("service test", cart)
         return newCart;
       } catch (error) {
         console.log(error);
       }
 
-/*     try {
-        const prodExist = await prodDao.getById(prodId);
-        const newProd  = await cartsDao.addProdToCart(cartId, prodId)
-        if(!prodExist) throw new Error ('Product not found !')
-        else return newProd;
-    } catch (error) {
-        console.log(error)
-    } */
 }
 
 export const removeCartService = async (id) => {
