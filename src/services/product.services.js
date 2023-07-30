@@ -5,9 +5,9 @@ const prodDao = new ProductDaoMongoDB();
 /* import ProductDaoFS from "../daos/filesystem/productManager.js";
 const prodDao = new ProductDaoFS(); */
 
-export const getAll = async () => {
+export const getAll = async (page, limit) => {
     try {
-        const response = await prodDao.getAll();
+        const response = await prodDao.getAll(page, limit);
         return response;
     } catch (error) {
         console.log(error)
