@@ -66,8 +66,10 @@ export const removeFromCart = async (cartId, prodId) => {
 
 export const removeCart = async (id) => {
   try {
-    const response = await CartsModel.findByIdAndDelete(id);
-    return response;
+    const cart = await CartsModel.findById(id);
+    cart.products = [];
+    await cart.save()
+    return cart;
   } catch (error) {
     console.log(error);
   }
