@@ -45,13 +45,24 @@ export const addProdToCart = async (cartId, prodId) => {
         quantity: 1,
       });
     }
-/*     console.log("cart en el dao",cart) */
     await cart.save();
     return cart;
   } catch (error) {
     console.log(error);
   }
 };
+
+export const removeFromCart = async (cartId, prodId) => {
+  try {
+    const cart = await CartsModel.findById(cartId);
+    cart.products.pull(prodId)
+    console.log("en el dao",cart)
+    await cart.save()
+    return cart
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export const removeCart = async (id) => {
   try {
@@ -61,3 +72,4 @@ export const removeCart = async (id) => {
     console.log(error);
   }
 };
+

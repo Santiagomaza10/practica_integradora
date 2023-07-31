@@ -48,6 +48,15 @@ export const addProdToCartService = async (cartId, prodId) => {
 
 }
 
+export const removeFromCartService = async (cartId, prodId) => {
+    try {
+        const cart = await cartsDao.removeFromCart(cartId, prodId)
+        return cart
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const removeCartService = async (id) => {
     try {
         const removeCart = await cartsDao.removeCart(id)

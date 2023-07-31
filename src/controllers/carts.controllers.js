@@ -46,6 +46,21 @@ export const addProduct = async (req,res,next) => {
       }
 }
 
+export const removeFromCart = async (req,res,next) => {
+    try {
+        const { id, productId } = req.params;
+        const cart = await service.removeFromCartService(id, productId);
+        if (cart) {
+            res.status(201).json(cart);
+        } else {
+            res.status(404).json({message: "Not found"})
+        }
+
+    } catch (error) {
+        res.status(404).json({message: "Not Found"})
+    }
+}
+
 export const remove = async (req,res,next) => {
     try {
         const { id } = req.params;
