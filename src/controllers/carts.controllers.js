@@ -57,7 +57,7 @@ export const removeFromCart = async (req,res,next) => {
         }
 
     } catch (error) {
-        res.status(404).json({message: "Not Found"})
+        next(error);
     }
 }
 
@@ -69,5 +69,18 @@ export const remove = async (req,res,next) => {
         else res.status(200).json(cartRemoved)
     } catch (error) {
         next(error.message)
+    }
+}
+
+export const updateQuantity = async (req,res,next) => {
+    try {
+        const { cid, pid } = req.params;
+        const { quantity } = req.body;
+        const updateQuantity = await service.updateQuantityService(cid, pid, quantity)
+
+        if(!updateQuantity) res.status(404).json({msg: "error updating quantity"})
+        else res.status(200).json(updateQuantity)
+    } catch (error) {
+        next(error);
     }
 }

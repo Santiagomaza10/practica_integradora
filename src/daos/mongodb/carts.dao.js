@@ -75,3 +75,14 @@ export const removeCart = async (id) => {
   }
 };
 
+export const updateQuantity = async (cartId, prodId, quantity) => {
+  try {
+    const cart = await CartsModel.findById(cartId);
+    const prodUpdate = cart.products.find((prod) => prod._id == prodId);
+    prodUpdate.quantity = quantity;
+    prodUpdate.save()
+    return cart
+  } catch (error) {
+    console.log(error)
+  }
+}

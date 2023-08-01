@@ -65,3 +65,12 @@ export const removeCartService = async (id) => {
         console.log(error)
     }
 }
+
+export const updateQuantityService = async (cartId, prodId, quantity) => {
+    try {
+        const updateQuantity = await cartsDao.updateQuantity(cartId, prodId, quantity);
+        return updateQuantity
+    } catch (error) {
+        console.log(error)
+    }
+}

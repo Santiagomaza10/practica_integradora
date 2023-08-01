@@ -11,6 +11,8 @@ router.post ('/', controller.create);
 
 router.post("/:id/product/:productId", controller.addProduct);
 
+router.put("/:cid/product/:pid", controller.updateQuantity)
+
 router.delete('/:id', controller.remove);
 
 router.delete("/:id/product/:productId", controller.removeFromCart)
