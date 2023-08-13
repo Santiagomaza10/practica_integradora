@@ -4,8 +4,10 @@ import {
   errorLogin,
   register,
   errorRegister,
-  profile,
+  profile
 } from "../controllers/views.controllers.js";
+import { logoutUser } from "../controllers/user.controllers.js";
+
 
 const router = Router();
 
@@ -18,5 +20,7 @@ router.get("/error-login", errorLogin);
 router.get("/error-register", errorRegister);
 
 router.get('/profile', profile)
+
+router.get('/logout', logoutUser)
 
 export default router;

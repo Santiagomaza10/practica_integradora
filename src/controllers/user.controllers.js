@@ -15,7 +15,7 @@ export const registerUser = async (req, res) => {
 export const loginUser = async(req,res) => {
     try {
         const { email, password } = req.body;
-        const user = await userDao.loginUser( req.body);
+        const user = await userDao.loginUser(req.body);
         if(user) {
             req.session.email = email;
             req.session.password = password;
@@ -24,4 +24,16 @@ export const loginUser = async(req,res) => {
     } catch (error) {
         console.log(error)
     }
+}
+
+export const logoutUser = async (req,res) => {
+  try {
+    req.session.destroy((err) => {
+      console.log("usuario deslogueado logout")
+      if(!err) res.redirect('/login');
+      else res.json({msg: 'session destroy' })
+    })
+  } catch (error) {
+    console.log(error)
+  }
 }
