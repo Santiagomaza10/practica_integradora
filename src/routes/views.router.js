@@ -7,6 +7,7 @@ import {
   profile
 } from "../controllers/views.controllers.js";
 import { logoutUser } from "../controllers/user.controllers.js";
+import { getAll } from "../controllers/product.controllers.js";
 
 
 const router = Router();
@@ -19,7 +20,7 @@ router.get("/error-login", errorLogin);
 
 router.get("/error-register", errorRegister);
 
-router.get('/profile', profile)
+router.get('/profile', getAll)
 
 router.get('/logout', logoutUser)
 
