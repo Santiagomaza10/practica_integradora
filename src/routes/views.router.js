@@ -20,7 +20,7 @@ router.get("/error-login", errorLogin);
 
 router.get("/error-register", errorRegister);
 
-router.get('/profile', getAll)
+router.get('/profile', profile)
 
 router.get('/logout', logoutUser)
 
