@@ -1,7 +1,16 @@
 import { UserModel } from "../daos/mongodb/models/user.model.js";
+import { getAll } from "../services/product.services.js";
 
-export const products = (req,res) => {
-    res.render("products")
+export const products = async (req,res) => {
+    try {
+        const response = await getAll(req.query)
+        const arrayProds = response.docs;
+        const plainProds = arrayProds.map((arr) => arr.toObject())
+        console.log("views controller de views // plainProds -->",plainProds)
+        res.render("products", plainProds)
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 export const register = (req, res) => {
@@ -18,6 +27,6 @@ export const errorLogin = (req, res) => {
 };
 export const profile = async (req, res) => {
     const user = req.session
-    console.log("toy en el profile controler", user)
+    console.log("views controller profile",user)
     res.render("profile")
 };

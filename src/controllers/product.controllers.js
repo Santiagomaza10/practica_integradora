@@ -6,6 +6,8 @@ export const getAll = async (req, res, next) => {
     const response = await service.getAll(page, limit);
     const next = response.hasNextPage ? `localhost:8080/api/products?page=${response.nextPage}` : null;
     const prev = response.hasPrevPage ? `localhost:8080/api/products?page=${response.prevPage}` : null;
+/*     res.render("products", response) // lo que me sugirio el tutor
+    console.log(response) */
     res.status(200).json({
       info: {
         count: response.totalDocs,
