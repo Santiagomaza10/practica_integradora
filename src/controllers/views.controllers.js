@@ -7,7 +7,7 @@ export const products = async (req,res) => {
         const arrayProds = response.docs;
         const plainProds = arrayProds.map((arr) => arr.toObject())
         console.log("views controller de views // plainProds -->",plainProds)
-        res.render("products", plainProds)
+        res.render("products", {docs: plainProds})
     } catch (error) {
         console.log(error)
     }
