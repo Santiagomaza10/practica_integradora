@@ -1,18 +1,18 @@
 <h1>Bienvenido !</h1>
-        <div class="row row-cols-1 row-cols-md-2 g-4 prod-list">
+        <div>
             {{#each docs}}
-            <div class="col">
-                <div class="card mb-3">
-                    <div class="card-body card-bg-color">
-                        <h5 class="card-title">Code: <strong>{{this.code}}</strong></h5>
-                        <p class="card-text">Titulo: <strong>{{this.title}}</strong> - Descripción: <strong>{{this.description}}</strong></p>
-                        <p class="card-text">Precio: <strong>{{this.price}}</strong></p>
-                        <p class="card-text">Stock: <strong>{{this.stock}}</strong></p>
-                        <p class="card-text">Categoría: <strong>{{this.category}}</strong></p>
-                        <button type="submit" action="api/carts/64c84f6ab338474a4bf98594/products/{{this._id}}" formmethod="POST" class="btn btn-light">Agregar al carrito</button>
+            <div>
+                <div>
+                    <div>
+                        <h5>Code: <strong>{{this.code}}</strong></h5>
+                        <p >Titulo: <strong>{{this.title}}</strong> - Descripción: <strong>{{this.description}}</strong></p>
+                        <p >Precio: <strong>{{this.price}}</strong></p>
+                        <p >Stock: <strong>{{this.stock}}</strong></p>
+                        <p >Categoría: <strong>{{this.category}}</strong></p>
+                        <button type="submit" action="api/carts/64c84f6ab338474a4bf98594/products/{{this._id}}" formmethod="POST">Agregar al carrito</button>
                     </div>
                 </div>
             </div>
         {{!-- agregar un fetch para traer el post --}}
             {{/each}}
-        </div>
+        </div>s

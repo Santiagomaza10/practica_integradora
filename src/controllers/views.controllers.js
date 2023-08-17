@@ -6,7 +6,6 @@ export const products = async (req,res) => {
         const response = await getAll(req.query)
         const arrayProds = response.docs;
         const plainProds = arrayProds.map((arr) => arr.toObject())
-        console.log("views controller de views // plainProds -->",plainProds)
         res.render("products", {docs: plainProds})
     } catch (error) {
         console.log(error)
@@ -27,6 +26,5 @@ export const errorLogin = (req, res) => {
 };
 export const profile = async (req, res) => {
     const user = req.session
-    console.log("views controller profile",user)
     res.render("profile")
 };
