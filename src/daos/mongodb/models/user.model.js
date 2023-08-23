@@ -16,11 +16,21 @@ const userSchema = new Schema({
     },
     age: {
         type: Number,
-        required: true
+        required: true,
+        default: 0
     },
     password: {
         type: String,
         required: true
+    },
+    role: {
+        type: String,
+        default: 'user'
+    },
+    isGithub: {
+        type: Boolean,
+        required: true,
+        default: false
     }
 })
 

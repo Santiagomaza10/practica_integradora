@@ -15,6 +15,7 @@ import handlebars from 'express-handlebars'
 import { __dirname } from './utils.js';
 import passport from 'passport';
 import './passport/local-strategy.js';
+import './passport/github-strategy.js'
 
 const mongoStoreOptions = {
     store: MongoStore.create({

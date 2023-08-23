@@ -65,3 +65,5 @@ export const logoutUser = async (req,res) => {
     console.log(error)
   }
 }
+
+/* GITHUB RESPONSE */

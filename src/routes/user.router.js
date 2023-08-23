@@ -10,4 +10,11 @@ router.post("/login",passport.authenticate('login'), loginUser);
 
 router.get('/logout', logoutUser)
 
+router.get('/register-github', passport.authenticate('github', {scope: ['user:email']}))
+
+router.get('/profile-github', passport.authenticate('github', {scope: ['user:email']}),
+ (req, res) => {
+    res.send('profile github')
+})
+
 export default router;
