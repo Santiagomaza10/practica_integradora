@@ -5,21 +5,22 @@ import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import morgan from 'morgan';
 import './daos/mongodb/connection.js';
-import productRouter from './routes/product.routes.js'
-import cartsRouter from './routes/carts.routes.js'
-import userRouter from './routes/user.router.js'
-import viewsRouter from './routes/views.router.js'
-import './config/dbConnection.js'
-import {connectionString} from './daos/mongodb/connection.js'
-import handlebars from 'express-handlebars'
+import productRouter from './routes/product.routes.js';
+import cartsRouter from './routes/carts.routes.js';
+import userRouter from './routes/user.router.js';
+import viewsRouter from './routes/views.router.js';
+import './config/dbConnection.js';
+import handlebars from 'express-handlebars';
 import { __dirname } from './utils.js';
 import passport from 'passport';
 import './passport/local-strategy.js';
-import './passport/github-strategy.js'
+import './passport/github-strategy.js';
+import 'dotenv/config';
+
 
 const mongoStoreOptions = {
     store: MongoStore.create({
-        mongoUrl: connectionString,
+        mongoUrl: process.env.MONGO_ATLAS_URL,
         crypto: {
             secret:'1234' 
         }
@@ -34,7 +35,7 @@ const mongoStoreOptions = {
 
 const app = express ();
 
-app.use (express.json());
+app.use (express.json())
 app.use (express.urlencoded({extended:true}));
 
 app.use(errorHandler);
@@ -61,8 +62,12 @@ app.use('/api/carts', cartsRouter)
 app.use('/users', userRouter)
 app.use('/', viewsRouter)
 
-app.listen(8080, () => {
-    console.log('Server listening on port 8080')
+/* PORT */
+
+const PORT = process.env.PORT;
+
+app.listen(PORT, () => {
+    console.log(`Server listening on ${PORT}`)
 })
 
 /* CLIENT SECRET: a9cbacd1af1e6343e8bf8e2063c4b92aedbd1ad1

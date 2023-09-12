@@ -12,7 +12,7 @@ export default class UserDao {
           return await UserModel.create({
             ...user,
             password: createHash(password),
-            /*             role: "admin", */
+                        role: "admin", //CHEQUEAR ESTO
           });
         }
         return await UserModel.create({
