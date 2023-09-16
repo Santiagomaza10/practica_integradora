@@ -7,12 +7,12 @@ export default class UserDao {
       const { email, password } = user;
       const existUser = await this.getByEmail(email)
       if (!existUser) {
-        if (email === "adminCoder@coder.com" && password === "adminCod3r123") {
+        if (email === "admincoder@coder.com" && password === "adminCod3r123") {
           //agregue este if que estaba pendiente, agregar role
           return await UserModel.create({
             ...user,
             password: createHash(password),
-                        role: "admin", //CHEQUEAR ESTO
+                        role: "admin",
           });
         }
         return await UserModel.create({
