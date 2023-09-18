@@ -4,6 +4,7 @@ import {
   errorLogin,
   register,
   errorRegister,
+  current,
   products
 } from "../controllers/views.controllers.js";
 import { logoutUser } from "../controllers/user.controllers.js"
@@ -22,5 +23,7 @@ router.get("/error-register", errorRegister);
 router.get('/logout', logoutUser)
 
 router.get("/products", products)
+
+router.get("/current", current)
 
 export default router;

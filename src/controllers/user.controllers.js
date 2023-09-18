@@ -21,7 +21,7 @@ export const loginUser = async (req, res, next) => {
     const user = await userDao.getById(userId);
     console.log("controller user",user, "termina el controller user")
     if(user) {
-      res.redirect('/products'); //modifique esto antes mandaba a profile
+      res.redirect('/current'); //modifique esto antes mandaba a profile
   } else res.redirect('/error-login')
     res.json({
       msg: 'Login ok',
@@ -44,5 +44,5 @@ export const logoutUser = async (req,res) => {
 }
 
 export const loginGithub = async (req,res) => {
-  res.redirect('/products')
+  res.redirect('/current')
 }
