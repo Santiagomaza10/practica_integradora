@@ -1,5 +1,7 @@
 import { createHash, isValidPassword } from "../../utils.js";
 import { UserModel } from "./models/user.model.js";
+import { createCart } from "./carts.dao.js";
+import { CartsModel } from "./models/carts.model.js";
 
 export default class UserDao {
   async registerUser(user) {
@@ -8,16 +10,19 @@ export default class UserDao {
       const existUser = await this.getByEmail(email);
       if (!existUser) {
         if (email === "admincoder@coder.com" && password === "adminCod3r123") {
-          //agregue este if que estaba pendiente, agregar role
+
           return await UserModel.create({
             ...user,
             password: createHash(password),
             role: "admin",
           });
         }
+
+        const cart = await createCart()
         return await UserModel.create({
           ...user,
           password: createHash(password),
+          cart: cart
         });
       } else return false;
     } catch (error) {

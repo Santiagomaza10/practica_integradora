@@ -31,7 +31,8 @@ const userSchema = new Schema({
         type: Boolean,
         required: true,
         default: false
-    }
+    },
+    cart: {}
 })
 
 export const UserModel = model('users', userSchema )

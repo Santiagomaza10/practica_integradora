@@ -3,7 +3,6 @@ import * as service from "../services/carts.services.js"
 export const getAllCarts = async (req,res,next) => {
     try {
         const response = await service.getAllCartsService();
-        console.log("carritos")
         res.status(200).json(response)
     } catch (error) {
         next(error.message)
