@@ -9,7 +9,7 @@
                         <p >Precio: <strong>{{this.price}}</strong></p>
                         <p >Stock: <strong>{{this.stock}}</strong></p>
                         <p >Categoría: <strong>{{this.category}}</strong></p>
-                        <button type="submit" action="api/carts/64c84f6ab338474a4bf98594/products/{{this._id}}" formmethod="POST">Agregar al carrito</button>
+                        <button type="submit" action="api/carts/{{user.cart._id}}/products/{{this._id}}" formmethod="POST">Agregar al carrito</button>
                     </div>
                 </div>
             </div>

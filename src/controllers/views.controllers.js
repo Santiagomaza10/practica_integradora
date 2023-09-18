@@ -37,6 +37,9 @@ export const current = async (req, res) => {
     const arrayProds = response.docs;
     const plainProds = arrayProds.map((arr) => arr.toObject())
     /* TRAYENDO DATOS DEL USUARIO */
+    const userId = req.session.passport.user
+    const user = await userDao.getById(userId);
+    const plainUser = user.toObject()
 
-    res.render("current", {docs: plainProds})
+    res.render("current", {docs: plainProds, user: plainUser})
 }
