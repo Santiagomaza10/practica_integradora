@@ -4,7 +4,6 @@ import {
   errorLogin,
   register,
   errorRegister,
-  profile,
   products
 } from "../controllers/views.controllers.js";
 import { logoutUser } from "../controllers/user.controllers.js"
@@ -19,8 +18,6 @@ router.get("/register", register);
 router.get("/error-login", errorLogin);
 
 router.get("/error-register", errorRegister);
-
-router.get('/profile', profile)
 
 router.get('/logout', logoutUser)
 

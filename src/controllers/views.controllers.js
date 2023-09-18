@@ -1,4 +1,3 @@
-import { UserModel } from "../daos/mongodb/models/user.model.js";
 import { getAll } from "../services/product.services.js";
 
 export const products = async (req,res) => {

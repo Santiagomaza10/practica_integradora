@@ -22,10 +22,10 @@ export const loginUser = async (req, res, next) => {
     if(user) {
       res.redirect('/products'); //modifique esto antes mandaba a profile
   } else res.redirect('/error-login')
-/*     res.json({
+    res.json({
       msg: 'Login ok',
       user
-    }) */
+    })
   } catch (error) {
     next(error.message)
   }
